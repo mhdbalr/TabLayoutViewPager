@@ -2,6 +2,7 @@ package id.rdev.tablayoutviewpager
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -26,7 +27,11 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.adapter = adapter
 
         binding.tabLayout.setupWithViewPager(binding.viewPager)
+        val icon_tab = LayoutInflater.from(this).inflate(R.layout.tab_icon, null)
+
+        binding.tabLayout.getTabAt(3)?.customView = icon_tab
     }
+
 
     class TabAdapter(fm: FragmentManager, behavior: Int) : FragmentStatePagerAdapter(fm, behavior) {
         private val tabName : Array<String> = arrayOf("Home", "Status", "Profile", "Camera")
